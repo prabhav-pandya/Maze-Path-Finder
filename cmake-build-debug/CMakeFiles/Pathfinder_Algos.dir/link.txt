@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Pathfinder_Algos.dir/objects.a
+C:\PROGRA~2\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\Pathfinder_Algos.dir/objects.a @CMakeFiles\Pathfinder_Algos.dir\objects1.rsp
+C:\PROGRA~2\CODEBL~1\MinGW\bin\G__~1.EXE -g   -Wl,--whole-archive CMakeFiles\Pathfinder_Algos.dir/objects.a -Wl,--no-whole-archive  -o Pathfinder_Algos.exe -Wl,--out-implib,libPathfinder_Algos.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Pathfinder_Algos.dir\linklibs.rsp
