@@ -10,9 +10,9 @@
 using namespace std;
 
 typedef struct point{
-    int r;
-    int c;
-    point *prev_point;
+    int row;
+    int col;
+    point *prevPoint;
     int dist;
 } point;
 

@@ -130,7 +130,7 @@ int PriorityQueue::relaxation(point* p){
 
     vector<point*>::iterator it = A.begin();
     for(int i=0;i<A.size();i++) {
-        if (A[i]->r == p->r && A[i]->c == p->c) {
+        if (A[i]->row == p->row && A[i]->col == p->col) {
             if (A[i]->dist > p->dist) {
                 A[i]=p;
                 heapify_up(i);

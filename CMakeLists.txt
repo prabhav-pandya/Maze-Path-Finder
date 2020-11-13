@@ -3,4 +3,4 @@ project(Pathfinder_Algos)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Pathfinder_Algos main.cpp dijkstra.cpp dijkstra.h PriorityQueue.cpp PriorityQueue.h utility.h)
+add_executable(Pathfinder_Algos main.cpp Dijkstra.cpp Dijkstra.h PriorityQueue.cpp PriorityQueue.h Utility.h)
