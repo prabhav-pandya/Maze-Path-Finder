@@ -1,5 +1,6 @@
 #include "Utility.h"
-#include "Dijkstra.h"
+//#include "Dijkstra.h"
+#include "AStar.h"
 
 void getEndPoints(int &startCol, int &startRow, int &destCol, int &destRow, char env[ROW][COL]){
     // get positions of starting and destination points
@@ -44,9 +45,13 @@ int main() {
 
     getEndPoints(startCol, startRow, destCol, destRow, env);
 
-    Dijkstra dj;
+//    Dijkstra dj;
+//
+//    dj.djikstra(startRow, startCol, destRow, destCol, env);
 
-    dj.djikstra(startRow, startCol, destRow, destCol, env);
+    AStar as;
+
+    as.astar(startRow, startCol, destRow, destCol, env);
 
     printEnv(env);
 

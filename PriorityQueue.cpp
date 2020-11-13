@@ -34,10 +34,10 @@ void PriorityQueue::heapify_down(int i)
 
     // compare A[i] with its left and right child
     // and find smallest value
-    if (left < size() && A[left]->dist < A[i]->dist)
+    if (left < size() && A[left]->cost < A[i]->cost)
         smallest = left;
 
-    if (right < size() && A[right]->dist < A[smallest]->dist)
+    if (right < size() && A[right]->cost < A[smallest]->cost)
         smallest = right;
 
     // swap with child having lesser value and
@@ -53,7 +53,7 @@ void PriorityQueue::heapify_up(int i)
 {
     // check if node at index i and its parent violates
     // the heap property
-    if (i && A[PARENT(i)]->dist > A[i]->dist)
+    if (i && A[PARENT(i)]->cost > A[i]->cost)
     {
         // swap the two if heap property is violated
         swap(A[i], A[PARENT(i)]);
@@ -131,7 +131,7 @@ int PriorityQueue::relaxation(point* p){
     vector<point*>::iterator it = A.begin();
     for(int i=0;i<A.size();i++) {
         if (A[i]->row == p->row && A[i]->col == p->col) {
-            if (A[i]->dist > p->dist) {
+            if (A[i]->cost > p->cost) {
                 A[i]=p;
                 heapify_up(i);
                 return 1;

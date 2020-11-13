@@ -1,19 +1,19 @@
 #ifndef PATHFINDER_ALGOS_PRIORITYQUEUE_H
 #define PATHFINDER_ALGOS_PRIORITYQUEUE_H
 
-
 #include "PriorityQueue.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
+
 using namespace std;
 
 typedef struct point{
     int row;
     int col;
     point *prevPoint;
-    int dist;
+    double cost;
 } point;
 
 struct PriorityQueue

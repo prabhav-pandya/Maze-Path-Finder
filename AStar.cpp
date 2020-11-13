@@ -1,6 +1,7 @@
-#include "Dijkstra.h"
+#include "AStar.h"
+#include <math.h>
 
-void Dijkstra::backTrack(point *endPoint, char env[ROW][COL]) {
+void AStar::backTrack(point *endPoint, char env[ROW][COL]) {
     // backtrack and mark all the path points by X
     point *c = endPoint->prevPoint;
     while (c->prevPoint != nullptr) {
@@ -9,7 +10,7 @@ void Dijkstra::backTrack(point *endPoint, char env[ROW][COL]) {
     }
 }
 
-void Dijkstra::djikstra(int startRow, int startCol, int destRow, int destCol, char env[ROW][COL]) {
+void AStar::astar(int startRow, int startCol, int destRow, int destCol, char env[ROW][COL]) {
 
     //envcopy is basically a copy of the env/maze to record all visited points which are represented as a *
     char envCopy[ROW][COL];
@@ -17,7 +18,7 @@ void Dijkstra::djikstra(int startRow, int startCol, int destRow, int destCol, ch
 
     //currPoint and nextPoint are cursors we use when iterating through the graph
     point *currPoint = new point();
-    currPoint->row = startRow, currPoint->col = startCol, currPoint->cost = 0, currPoint->prevPoint = nullptr; // initialise the cursor to starting point
+    currPoint->row = startRow, currPoint->col = startCol, currPoint->cost += sqrt(pow(currPoint->row - destRow,2)+pow(currPoint->col - destCol,2)), currPoint->prevPoint = nullptr; // initialise the cursor to starting point
 
     point *nextPoint;
 
@@ -36,12 +37,17 @@ void Dijkstra::djikstra(int startRow, int startCol, int destRow, int destCol, ch
         // 1. within maze boundaries    AND
         // 2. not a Wall                AND
         // 3. unvisited
+
+        // pop the top element and move to the next element in the queue
+        currPoint = priorityQueue->top();
+        priorityQueue->pop();
+
         if (currPoint->row - 1 != -1 && env[currPoint->row - 1][currPoint->col] != 'W' && envCopy[currPoint->row - 1][currPoint->col] != '*') {
             nextPoint = new point();
             nextPoint->prevPoint = currPoint;
             nextPoint->row = currPoint->row - 1;
             nextPoint->col = currPoint->col;
-            nextPoint->cost = currPoint->cost + 1;
+            nextPoint->cost = sqrt(pow(nextPoint->row - destRow,2)+pow(nextPoint->col - destCol,2));
 
             // check if nextPoint is the Destination
             if (nextPoint->row == destRow && nextPoint->col == destCol) {
@@ -65,7 +71,7 @@ void Dijkstra::djikstra(int startRow, int startCol, int destRow, int destCol, ch
             nextPoint->prevPoint = currPoint;
             nextPoint->row = currPoint->row;
             nextPoint->col = currPoint->col - 1;
-            nextPoint->cost = currPoint->cost + 1;
+            nextPoint->cost = sqrt(pow(nextPoint->row - destRow,2)+pow(nextPoint->col - destCol,2));
 
             // check if nextPoint is the Destination
             if (nextPoint->row == destRow && nextPoint->col == destCol) {
@@ -89,7 +95,7 @@ void Dijkstra::djikstra(int startRow, int startCol, int destRow, int destCol, ch
             nextPoint->prevPoint = currPoint;
             nextPoint->row = currPoint->row;
             nextPoint->col = currPoint->col + 1;
-            nextPoint->cost = currPoint->cost + 1;
+            nextPoint->cost = sqrt(pow(nextPoint->row - destRow,2)+pow(nextPoint->col - destCol,2));
 
             // check if nextPoint is the Destination
             if (nextPoint->row == destRow && nextPoint->col == destCol) {
@@ -113,7 +119,7 @@ void Dijkstra::djikstra(int startRow, int startCol, int destRow, int destCol, ch
             nextPoint->prevPoint = currPoint;
             nextPoint->row = currPoint->row + 1;
             nextPoint->col = currPoint->col;
-            nextPoint->cost = currPoint->cost + 1;
+            nextPoint->cost = sqrt(pow(nextPoint->row - destRow,2)+pow(nextPoint->col - destCol,2));
 
             // check if nextPoint is the Destination
             if (nextPoint->row == destRow && nextPoint->col == destCol) {
@@ -127,11 +133,8 @@ void Dijkstra::djikstra(int startRow, int startCol, int destRow, int destCol, ch
                 priorityQueue->push(nextPoint);
             }
         }
-        // pop the top element and move to the next element in the queue
-        priorityQueue->pop();
-        currPoint = priorityQueue->top();
     }
 
-
 }
+
 

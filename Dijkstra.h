@@ -1,7 +1,6 @@
 #ifndef PATHFINDER_ALGOS_DIJKSTRA_H
 #define PATHFINDER_ALGOS_DIJKSTRA_H
 
-typedef struct point Point;
 
 #include "Dijkstra.h"
 #include "Utility.h"
