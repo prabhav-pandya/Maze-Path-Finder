@@ -2,8 +2,7 @@
 
 void Dijkstra::backTrack(point *endPoint, char env[ROW][COL]) {
     // backtrack and mark all the path points by X
-
-    point *c = endPoint;
+    point *c = endPoint->prevPoint;
     while (c->prevPoint != nullptr) {
         env[c->row][c->col] = 'X';
         c = c->prevPoint;
@@ -12,10 +11,12 @@ void Dijkstra::backTrack(point *endPoint, char env[ROW][COL]) {
 
 void Dijkstra::djikstra(int startRow, int startCol, int destRow, int destCol, char env[ROW][COL]) {
 
+    //envcopy is basically a copy of the env/maze to record all visited points which are represented as a *
     char envCopy[ROW][COL];
-    memcpy(envCopy, env, sizeof(char) * ROW * COL); // create a copy of env
+    memcpy(envCopy, env, sizeof(char) * ROW * COL);
 
-    Point *currPoint = new point(); // create a cursor
+    //currPoint is a cursor we use when iterating through the graph
+    Point *currPoint = new point();
     currPoint->row = startRow, currPoint->col = startCol, currPoint->dist = 0, currPoint->prevPoint = nullptr; // initialise the cursor to starting point
 
     Point *nextPoint;
@@ -34,6 +35,7 @@ void Dijkstra::djikstra(int startRow, int startCol, int destRow, int destCol, ch
          - update point if distance from starting point is shorter (relaxation)
          - backtrack and return if destination point is found
         */
+
 
         if (currPoint->row - 1 != -1 && env[currPoint->row - 1][currPoint->col] != 'W' && envCopy[currPoint->row - 1][currPoint->col] != '*') {
             nextPoint = new point();
