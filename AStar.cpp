@@ -1,6 +1,16 @@
 #include "AStar.h"
 #include <math.h>
 
+bool AStar::isValid(int row, int col, char envCopy[ROW][COL])
+{
+    // return true if row number and column number
+    // is in range
+    return (row >= 0) && (row < ROW) &&
+           (col >= 0) && (col < COL) &&
+           envCopy[row][col] != 'W' &&
+           envCopy[row][col] != '*';
+}
+
 void AStar::backTrack(point *endPoint, char env[ROW][COL]) {
     // backtrack and mark all the path points by X
     point *c = endPoint->prevPoint;
@@ -32,7 +42,13 @@ void AStar::astar(int startRow, int startCol, int destRow, int destCol, char env
     // - ignore if index is out of range
     // - update point if distance from starting point is shorter (relaxation)
     // - backtrack and return if destination point is found
+
     while (priorityQueue->size() != 0) {
+        // These arrays are used to get row and column
+        // numbers of 4 neighbours of a given cell
+        int rowNum[] = {-1, 0, 0, 1};
+        int colNum[] = {0, -1, 1, 0};
+
         // check if point directly ABOVE currPoint is
         // 1. within maze boundaries    AND
         // 2. not a Wall                AND
@@ -42,97 +58,30 @@ void AStar::astar(int startRow, int startCol, int destRow, int destCol, char env
         currPoint = priorityQueue->top();
         priorityQueue->pop();
 
-        if (currPoint->row - 1 != -1 && env[currPoint->row - 1][currPoint->col] != 'W' && envCopy[currPoint->row - 1][currPoint->col] != '*') {
-            nextPoint = new point();
-            nextPoint->prevPoint = currPoint;
-            nextPoint->row = currPoint->row - 1;
-            nextPoint->col = currPoint->col;
-            nextPoint->cost = sqrt(pow(nextPoint->row - destRow,2)+pow(nextPoint->col - destCol,2));
+        for(int i=0;i<4;i++) {
+            int row = currPoint->row + rowNum[i];
+            int col = currPoint->col + colNum[i];
+            if (isValid(row,col,envCopy)) {
+                nextPoint = new point();
+                nextPoint->prevPoint = currPoint;
+                nextPoint->row = row;
+                nextPoint->col = col;
+                nextPoint->cost = sqrt(pow(row - destRow, 2) + pow(col - destCol, 2));
 
-            // check if nextPoint is the Destination
-            if (nextPoint->row == destRow && nextPoint->col == destCol) {
-                backTrack(nextPoint, env);
-                return;
-            }
+                // check if nextPoint is the Destination
+                if (row == destRow && col == destCol) {
+                    backTrack(nextPoint, env);
+                    return;
+                }
 
-            // if not destination, mark it as visited and push it to the queue IF its distance from Start is lesser
-            envCopy[nextPoint->row][nextPoint->col] = '*';
-            if (!priorityQueue->relaxation(nextPoint)) {
-                priorityQueue->push(nextPoint);
-            }
-        }
-
-        // check if point to the LEFT of currPoint is
-        // 1. within maze boundaries    AND
-        // 2. not a Wall                AND
-        // 3. unvisited
-        if (currPoint->col - 1 != -1 && env[currPoint->row][currPoint->col - 1] != 'W' && envCopy[currPoint->row][currPoint->col - 1] != '*') {
-            nextPoint = new point();
-            nextPoint->prevPoint = currPoint;
-            nextPoint->row = currPoint->row;
-            nextPoint->col = currPoint->col - 1;
-            nextPoint->cost = sqrt(pow(nextPoint->row - destRow,2)+pow(nextPoint->col - destCol,2));
-
-            // check if nextPoint is the Destination
-            if (nextPoint->row == destRow && nextPoint->col == destCol) {
-                backTrack(nextPoint, env);
-                return;
-            }
-
-            // if not destination, mark it as visited and push it to the queue IF its distance from Start is lesser
-            envCopy[nextPoint->row][nextPoint->col] = '*';
-            if (!priorityQueue->relaxation(nextPoint)) {
-                priorityQueue->push(nextPoint);
+                // if not destination, mark it as visited and push it to the queue IF its distance from Start is lesser
+                envCopy[row][col] = '*';
+                if (!priorityQueue->relaxation(nextPoint)) {
+                    priorityQueue->push(nextPoint);
+                }
             }
         }
 
-        // check if point to the RIGHT of currPoint is
-        // 1. within maze boundaries    AND
-        // 2. not a Wall                AND
-        // 3. unvisited
-        if (currPoint->col + 1 != COL && env[currPoint->row][currPoint->col + 1] != 'W' && envCopy[currPoint->row][currPoint->col + 1] != '*') {
-            nextPoint = new point();
-            nextPoint->prevPoint = currPoint;
-            nextPoint->row = currPoint->row;
-            nextPoint->col = currPoint->col + 1;
-            nextPoint->cost = sqrt(pow(nextPoint->row - destRow,2)+pow(nextPoint->col - destCol,2));
-
-            // check if nextPoint is the Destination
-            if (nextPoint->row == destRow && nextPoint->col == destCol) {
-                backTrack(nextPoint, env);
-                return;
-            }
-
-            // if not destination, mark it as visited and push it to the queue IF its distance from Start is lesser
-            envCopy[nextPoint->row][nextPoint->col] = '*';
-            if (!priorityQueue->relaxation(nextPoint)) {
-                priorityQueue->push(nextPoint);
-            }
-        }
-
-        // check if point directly BELOW currPoint is
-        // 1. within maze boundaries    AND
-        // 2. not a Wall                AND
-        // 3. unvisited
-        if (currPoint->row + 1 != ROW && env[currPoint->row + 1][currPoint->col] != 'W' && envCopy[currPoint->row + 1][currPoint->col] != '*') {
-            nextPoint = new point();
-            nextPoint->prevPoint = currPoint;
-            nextPoint->row = currPoint->row + 1;
-            nextPoint->col = currPoint->col;
-            nextPoint->cost = sqrt(pow(nextPoint->row - destRow,2)+pow(nextPoint->col - destCol,2));
-
-            // check if nextPoint is the Destination
-            if (nextPoint->row == destRow && nextPoint->col == destCol) {
-                backTrack(nextPoint, env);
-                return;
-            }
-
-            // if not destination, mark it as visited and push it to the queue IF its distance from Start is lesser
-            envCopy[nextPoint->row][nextPoint->col] = '*';
-            if (!priorityQueue->relaxation(nextPoint)) {
-                priorityQueue->push(nextPoint);
-            }
-        }
     }
 
 }

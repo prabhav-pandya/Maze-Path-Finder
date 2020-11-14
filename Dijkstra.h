@@ -8,7 +8,7 @@
 class Dijkstra {
 private:
     static void backTrack(point *endPoint, char env[ROW][COL]);
-
+    static bool isValid(int row, int col, char env[ROW][COL]);
 public:
     static void djikstra(int startRow, int startCol, int destRow, int destCol, char env[ROW][COL]);
 };
