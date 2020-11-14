@@ -49,9 +49,9 @@ int main() {
 //
 //    dj.djikstra(startRow, startCol, destRow, destCol, env);
 
-    AStar as;
+    AStar ass;
 
-    as.astar(startRow, startCol, destRow, destCol, env);
+    ass.astar(startRow, startCol, destRow, destCol, env);
 
     printEnv(env);
 
