@@ -2,6 +2,7 @@
 #define PATHFINDER_ALGOS_PRIORITYQUEUE_H
 
 #include "PriorityQueue.h"
+#include "Utility.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>

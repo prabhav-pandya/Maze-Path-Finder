@@ -1,6 +1,7 @@
 #include "Utility.h"
-#include "Dijkstra.h"
+//#include "Dijkstra.h"
 //#include "AStar.h"
+#include "BFS.h"
 
 void getEndPoints(int &startCol, int &startRow, int &destCol, int &destRow, char env[ROW][COL]){
     // get positions of starting and destination points
@@ -45,13 +46,17 @@ int main() {
 
     getEndPoints(startCol, startRow, destCol, destRow, env);
 
-    Dijkstra dj;
-
-    dj.djikstra(startRow, startCol, destRow, destCol, env);
+//    Dijkstra dj;
+//
+//    dj.djikstra(startRow, startCol, destRow, destCol, env);
 
 //    AStar ass;
 //
 //    ass.astar(startRow, startCol, destRow, destCol, env);
+
+    BFS b;
+
+    b.bfs(startRow, startCol, destRow, destCol, env);
 
     printEnv(env);
 
