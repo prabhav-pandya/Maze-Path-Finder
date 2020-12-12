@@ -10,8 +10,7 @@ void BFS::backTrack(point *endPoint, char env[ROW][COL]) {
 }
 
 
-bool BFS::isValid(int row, int col, char envCopy[ROW][COL])
-{
+bool BFS::isValid(int row, int col, char envCopy[ROW][COL]) {
     // return true if row number and column number
     // is in range
     return (row >= 0) && (row < ROW) &&
@@ -20,10 +19,10 @@ bool BFS::isValid(int row, int col, char envCopy[ROW][COL])
            envCopy[row][col] != '*';
 }
 
-void BFS::bfs(int startRow, int startCol, int destRow, int destCol, char env[ROW][COL]){
+void BFS::bfs(int startRow, int startCol, int destRow, int destCol, char env[ROW][COL]) {
     //create a copy of the environment
     char envCopy[ROW][COL];
-    memcpy(envCopy, env, ROW*COL*sizeof(char));
+    memcpy(envCopy, env, ROW * COL * sizeof(char));
 
     // These arrays are used to get row and column
     // numbers of 4 neighbours of a given cell
@@ -36,14 +35,14 @@ void BFS::bfs(int startRow, int startCol, int destRow, int destCol, char env[ROW
     envCopy[startRow][startCol] = '*';
 
     //initialise a Queue
-    queue<point*> q;
+    queue<point *> q;
     q.push(currPoint);
 
-    while(!q.empty()){
-        for(int i=0;i<4;i++){
+    while (!q.empty()) {
+        for (int i = 0; i < 4; i++) {
             int row = currPoint->row + rowNum[i];
             int col = currPoint->col + colNum[i];
-            if (isValid(row,col,envCopy)) {
+            if (isValid(row, col, envCopy)) {
                 nextPoint = new point();
                 nextPoint->prevPoint = currPoint;
                 nextPoint->row = row;
@@ -63,7 +62,6 @@ void BFS::bfs(int startRow, int startCol, int destRow, int destCol, char env[ROW
         q.pop();
         currPoint = q.front();
     }
-
 
 
 }

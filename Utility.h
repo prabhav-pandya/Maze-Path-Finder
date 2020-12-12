@@ -4,6 +4,7 @@
 #include <iostream>
 #include<bits/stdc++.h>
 #include "Algorithms/PriorityQueue.h"
+#include <queue>
 #include <stdlib.h>
 
 #define ROW 20

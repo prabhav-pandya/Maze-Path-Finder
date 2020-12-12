@@ -4,7 +4,7 @@ void MazeGenerator::getGrid(char grid[ROW][COL]) {
     srand(time(nullptr));
     resetGrid(grid);
     visit(grid, 0, 0);
-    grid[1][1] = 'S';
+    grid[0][0] = 'S';
     grid[finalX][finalY] = 'E';
     printGrid(grid);
 }

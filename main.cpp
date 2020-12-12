@@ -6,19 +6,15 @@
 #include <SFML/Graphics.hpp>
 
 void getEndPoints(int &startCol, int &startRow, int &destCol, int &destRow, char env[ROW][COL]) {
-    // get positions of starting and destination points
-
     for (int i = 0; i < ROW; i++) {
-        if (env[i][COL - 1] == 'E') destCol = COL - 1, destRow = i;
-        else if (env[i][COL - 1] == 'S') startCol = COL - 1, startRow = i;
+        if (env[i][COL - 1] == 'E')
+            destCol = COL - 1, destRow = i;
+        else if (env[i][COL - 1] == 'S')
+            startCol = COL - 1, startRow = i;
         else if (find(env[i], &env[i][COL - 1], 'E') - env[i] != COL - 1)
-            destCol =
-                    find(env[i], &env[i][COL - 1], 'E') -
-                    env[i], destRow = i;
+            destCol = find(env[i], &env[i][COL - 1], 'E') - env[i], destRow = i;
         else if (find(env[i], &env[i][COL - 1], 'S') - env[i] != COL - 1)
-            startCol =
-                    find(env[i], &env[i][COL - 1], 'S') -
-                    env[i], startRow = i;
+            startCol = find(env[i], &env[i][COL - 1], 'S') - env[i], startRow = i;
     }
 }
 
@@ -111,8 +107,8 @@ int main() {
     getEndPoints(startCol, startRow, destCol, destRow, env);
 
 //    Dijkstra::djikstra(startRow, startCol, destRow, destCol, env);
-    AStar::astar(startRow, startCol, destRow, destCol, env);
-//    BFS::bfs(startRow, startCol, destRow, destCol, env);
+//    AStar::astar(startRow, startCol, destRow, destCol, env);
+    BFS::bfs(startRow, startCol, destRow, destCol, env);
 
     printEnv(env);
     drawEnv(env);
