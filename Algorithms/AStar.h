@@ -3,7 +3,7 @@
 
 
 #include "AStar.h"
-#include "Utility.h"
+#include "../Utility.h"
 
 class AStar {
 private:

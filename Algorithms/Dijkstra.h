@@ -3,7 +3,7 @@
 
 
 #include "Dijkstra.h"
-#include "Utility.h"
+#include "../Utility.h"
 
 class Dijkstra {
 private:

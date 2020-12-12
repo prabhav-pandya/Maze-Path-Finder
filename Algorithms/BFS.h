@@ -2,7 +2,7 @@
 #define PATHFINDER_ALGOS_BFS_H
 
 #include "BFS.h"
-#include "Utility.h"
+#include "../Utility.h"
 #include <queue>
 
 typedef struct node{

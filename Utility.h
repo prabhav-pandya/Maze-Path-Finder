@@ -3,11 +3,16 @@
 
 #include <iostream>
 #include<bits/stdc++.h>
-#include "PriorityQueue.h"
+#include "Algorithms/PriorityQueue.h"
 #include <stdlib.h>
 
-#define ROW 10
-#define COL 10
+#define ROW 20
+#define COL 15
+
+#define NORTH 0
+#define EAST 1
+#define SOUTH 2
+#define WEST 3
 
 using namespace std;
 
