@@ -40,7 +40,7 @@ int drawEnv(char env[ROW][COL]) {
                 int y = j * 50;
 
                 sf::RectangleShape whitecolor(sf::Vector2f(50, 50)); //White rectangles for the board
-                whitecolor.setFillColor(sf::Color(128, 128, 128));
+                whitecolor.setFillColor(sf::Color(36, 8, 150));
                 whitecolor.setPosition(sf::Vector2f(x, y));
                 vec.push_back(whitecolor);
             }
@@ -49,7 +49,7 @@ int drawEnv(char env[ROW][COL]) {
                 int y = j * 50;
 
                 sf::RectangleShape whitecolor(sf::Vector2f(50, 50)); //White rectangles for the board
-                whitecolor.setFillColor(sf::Color::Red);
+                whitecolor.setFillColor(sf::Color(134, 33, 222));
                 whitecolor.setPosition(sf::Vector2f(x, y));
                 vec.push_back(whitecolor);
             }
@@ -58,7 +58,7 @@ int drawEnv(char env[ROW][COL]) {
                 int y = j * 50;
 
                 sf::RectangleShape whitecolor(sf::Vector2f(50, 50)); //White rectangles for the board
-                whitecolor.setFillColor(sf::Color::Green);
+                whitecolor.setFillColor(sf::Color(176, 66, 255));
                 whitecolor.setPosition(sf::Vector2f(x, y));
                 vec.push_back(whitecolor);
             }
@@ -67,7 +67,7 @@ int drawEnv(char env[ROW][COL]) {
                 int y = j * 50;
 
                 sf::RectangleShape whitecolor(sf::Vector2f(50, 50)); //White rectangles for the board
-                whitecolor.setFillColor(sf::Color(211, 211, 211));
+                whitecolor.setFillColor(sf::Color(180, 161, 255));
                 whitecolor.setPosition(sf::Vector2f(x, y));
                 vec.push_back(whitecolor);
             }
@@ -107,8 +107,8 @@ int main() {
     getEndPoints(startCol, startRow, destCol, destRow, env);
 
 //    Dijkstra::djikstra(startRow, startCol, destRow, destCol, env);
-//    AStar::astar(startRow, startCol, destRow, destCol, env);
-    BFS::bfs(startRow, startCol, destRow, destCol, env);
+   AStar::astar(startRow, startCol, destRow, destCol, env);
+    //BFS::bfs(startRow, startCol, destRow, destCol, env);
 
     printEnv(env);
     drawEnv(env);
