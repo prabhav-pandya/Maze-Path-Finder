@@ -221,7 +221,7 @@ int drawEnv(vector<vector<char>> env, int row, int col) {
 
             if (env[i][j] == wallChar) whitecolor.setFillColor(sf::Color(36, 8, 150));
 
-            else if (env[i][j] == playerChar|| env[i][j] == goalChar) whitecolor.setFillColor(sf::Color(134, 33, 222));
+            else if (env[i][j] == playerChar|| env[i][j] == goalChar) whitecolor.setFillColor(sf::Color(117, 40, 166));
 
             else if (env[i][j] == 'o') whitecolor.setFillColor(sf::Color(176, 66, 255));
 
