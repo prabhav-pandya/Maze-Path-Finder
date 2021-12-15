@@ -1,5 +1,9 @@
 # depslib dependency file v1.0
-1639331989 source:c:\users\vabha\desktop\c++\maze-path-finder\main.cpp
+1639576278 source:c:\users\vabha\desktop\c++\maze-path-finder\main.cpp
+	<bits/stdc++.h>
+	<cstring>
+	<cstdlib>
+	<queue>
 	"Utility.h"
 	"Algorithms/MazeGenerator.h"
 	"Algorithms/Dijkstra.h"
@@ -7,14 +11,14 @@
 	"Algorithms/BFS.h"
 	<SFML/Graphics.hpp>
 
-1639330191 c:\users\vabha\desktop\c++\maze-path-finder\utility.h
+1639574863 c:\users\vabha\desktop\c++\maze-path-finder\utility.h
 	<iostream>
 	<bits/stdc++.h>
 	"Algorithms/PriorityQueue.h"
 	<queue>
 	<stdlib.h>
 
-1639330191 c:\users\vabha\desktop\c++\maze-path-finder\algorithms\priorityqueue.h
+1639569878 c:\users\vabha\desktop\c++\maze-path-finder\algorithms\priorityqueue.h
 	"PriorityQueue.h"
 	"../Utility.h"
 	<iostream>
@@ -22,35 +26,35 @@
 	<algorithm>
 	<stdexcept>
 
-1639330191 c:\users\vabha\desktop\c++\maze-path-finder\algorithms\mazegenerator.h
+1639569878 c:\users\vabha\desktop\c++\maze-path-finder\algorithms\mazegenerator.h
 	"../Utility.h"
 
-1639330191 c:\users\vabha\desktop\c++\maze-path-finder\algorithms\dijkstra.h
+1639569878 c:\users\vabha\desktop\c++\maze-path-finder\algorithms\dijkstra.h
 	"Dijkstra.h"
 	"../Utility.h"
 
-1639330191 c:\users\vabha\desktop\c++\maze-path-finder\algorithms\astar.h
+1639569878 c:\users\vabha\desktop\c++\maze-path-finder\algorithms\astar.h
 	"AStar.h"
 	"../Utility.h"
 
-1639330191 c:\users\vabha\desktop\c++\maze-path-finder\algorithms\bfs.h
+1639569878 c:\users\vabha\desktop\c++\maze-path-finder\algorithms\bfs.h
 	"BFS.h"
 	"../Utility.h"
 	<queue>
 
-1639330191 source:c:\users\vabha\desktop\c++\maze-path-finder\algorithms\astar.cpp
+1639569878 source:c:\users\vabha\desktop\c++\maze-path-finder\algorithms\astar.cpp
 	"AStar.h"
 	<math.h>
 
-1639330191 source:c:\users\vabha\desktop\c++\maze-path-finder\algorithms\bfs.cpp
+1639569878 source:c:\users\vabha\desktop\c++\maze-path-finder\algorithms\bfs.cpp
 	"BFS.h"
 
-1639330191 source:c:\users\vabha\desktop\c++\maze-path-finder\algorithms\dijkstra.cpp
+1639569878 source:c:\users\vabha\desktop\c++\maze-path-finder\algorithms\dijkstra.cpp
 	"Dijkstra.h"
 
-1639330191 source:c:\users\vabha\desktop\c++\maze-path-finder\algorithms\mazegenerator.cpp
+1639569878 source:c:\users\vabha\desktop\c++\maze-path-finder\algorithms\mazegenerator.cpp
 	"MazeGenerator.h"
 
-1639330191 source:c:\users\vabha\desktop\c++\maze-path-finder\algorithms\priorityqueue.cpp
+1639569878 source:c:\users\vabha\desktop\c++\maze-path-finder\algorithms\priorityqueue.cpp
 	"PriorityQueue.h"
 

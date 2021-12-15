@@ -15,6 +15,11 @@
 #define SOUTH 2
 #define WEST 3
 
+#define playerChar 'P'
+#define goalChar 'G'
+#define wallChar 'B'
+
+
 using namespace std;
 
 #endif //PATHFINDER_ALGOS_UTILITY_H
