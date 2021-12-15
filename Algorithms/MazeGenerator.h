@@ -13,11 +13,11 @@ private:
     int finalX, finalY;
 
 public:
-    static void resetGrid(char grid[ROW][COL]);
+    static void resetGrid(vector<vector<char>> &grid);
     static int isInBounds(int x, int y );
-    void visit(char grid[ROW][COL], int x, int y);
-    static void printGrid(char grid[ROW][COL]);
-    void getGrid(char grid[ROW][COL]);
+    void visit(vector<vector<char>> &grid, int x, int y);
+    static void printGrid(vector<vector<char>> &grid);
+    void getGrid(vector<vector<char>> &grid);
 };
 
 

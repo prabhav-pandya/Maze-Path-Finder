@@ -85,15 +85,15 @@ void bfs(vector<vector<char>> board){
 
     Position currentPos{};
 
-    int adjMovesRow[] = {1, -1, 1, 1, -1, -1, 0, 0};
-    int adjMovesCol[] = {0, 0, 1, -1, -1, 1, 1, -1};
+    int adjMovesRow[] = {0,1,0,-1};
+    int adjMovesCol[] = {1,0,-1,0};
 
     while(calculateManhattan(currentPos, goalPos)!=0 && !openList.empty()){
 
         currentPos = openList.top();
 
         openList.pop();
-        for(int i=0;i<8;i++){
+        for(int i=0;i<4;i++){
             if((currentPos.row + adjMovesRow[i]<numRows && currentPos.row + adjMovesRow[i]>=0) && (currentPos.col + adjMovesCol[i]<numCols && currentPos.col + adjMovesCol[i]>=0)){
                 if(board[currentPos.row+adjMovesRow[i]][currentPos.col+adjMovesCol[i]]!=wallChar){
                     Position newMove = Position{currentPos.row+adjMovesRow[i], currentPos.col+adjMovesCol[i]};
@@ -140,15 +140,15 @@ void astar(vector<vector<char>> board){
 
     Position currentPos{};
 
-    int adjMovesRow[] = {1, -1, 1, 1, -1, -1, 0, 0};
-    int adjMovesCol[] = {0, 0, 1, -1, -1, 1, 1, -1};
+    int adjMovesRow[] = {0,1,0,-1};
+    int adjMovesCol[] = {1,0,-1,0};
 
     while(calculateManhattan(currentPos, goalPos)!=0 && !openList.empty()){
 
         currentPos = openList.top();
 
         openList.pop();
-        for(int i=0;i<8;i++){
+        for(int i=0;i<4;i++){
             if((currentPos.row + adjMovesRow[i]<numRows && currentPos.row + adjMovesRow[i]>=0) && (currentPos.col + adjMovesCol[i]<numCols && currentPos.col + adjMovesCol[i]>=0)){
                 if(board[currentPos.row+adjMovesRow[i]][currentPos.col+adjMovesCol[i]]!=wallChar){
                     Position newMove = Position{currentPos.row+adjMovesRow[i], currentPos.col+adjMovesCol[i]};
@@ -255,16 +255,22 @@ int drawEnv(vector<vector<char>> env, int row, int col) {
     return EXIT_SUCCESS;
 }
 
+
+
 int main()
 {
-    cout<<"Hello user!\nDesign your matrix:\n>Use _ for empty tiles\n>Use B for wall blocks\n>Use P & G to position your playerChar & goal respectively\n"<<endl;
-    bool end = false;
-
     int row, col;
-    cout<<"\nEnter Number of rows and cols: ";
-    cin>>row>>col;
+    char ch;
+    cout<<"Would you like to automatically generate a maze or design one manually? (y/n) "<<endl;
+    cin>>ch;
 
-    for(int i=0;i<row;i++){
+    if(ch=='y'){
+        cout<<"\nDesign your matrix:\n>Use _ for empty tiles\n>Use B for wall blocks\n>Use P & G to position your playerChar & goal respectively\n"<<endl;
+        bool end = false;
+        cout<<"\nEnter Number of rows and cols: ";
+        cin>>row>>col;
+
+        for(int i=0;i<row;i++){
         vector<char> row;
         for(int j=0;j<col;j++){
             char el;
@@ -272,6 +278,14 @@ int main()
             row.push_back(el);
         }
         env.push_back(row);
+    }
+    }
+    else{
+        env = vector<vector<char>>(ROW, vector<char>(COL, ' '));
+        MazeGenerator mazeGenerator{};
+        mazeGenerator.getGrid(env);
+        row = ROW;
+        col = COL;
     }
     int choice;
     cout<<"\nChoose:\n1. BFS\n2. A*\n";

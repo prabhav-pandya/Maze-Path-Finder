@@ -1,18 +1,18 @@
 #include "MazeGenerator.h"
 
-void MazeGenerator::getGrid(char grid[ROW][COL]) {
+void MazeGenerator::getGrid(vector<vector<char>> &grid) {
     srand(time(nullptr));
     resetGrid(grid);
     visit(grid, 0, 0);
-    grid[0][0] = 'S';
-    grid[finalX][finalY] = 'E';
+    grid[0][0] = playerChar;
+    grid[finalX][finalY] = goalChar;
     printGrid(grid);
 }
 
-void MazeGenerator::resetGrid(char grid[ROW][COL]) {
+void MazeGenerator::resetGrid(vector<vector<char>> &grid) {
     for (int x = 0; x < ROW; ++x) {
         for (int y = 0; y < COL; ++y) {
-            grid[x][y] = 'W';
+            grid[x][y] = wallChar;
         }
     }
 }
@@ -24,7 +24,7 @@ int MazeGenerator::isInBounds(int x, int y) {
 }
 
 
-void MazeGenerator::visit(char grid[ROW][COL], int x, int y) {
+void MazeGenerator::visit(vector<vector<char>> &grid, int x, int y) {
     this->finalX = x;
     this->finalY = y;
     grid[x][y] = '_';
@@ -63,7 +63,7 @@ void MazeGenerator::visit(char grid[ROW][COL], int x, int y) {
         int x2 = x + (dx << 1);
         int y2 = y + (dy << 1);
         if (isInBounds(x2, y2)) {
-            if (grid[x2][y2] == 'W') {
+            if (grid[x2][y2] == wallChar) {
                 grid[x2 - dx][y2 - dy] = '_';
                 this->visit(grid, x2, y2);
             }
@@ -71,7 +71,7 @@ void MazeGenerator::visit(char grid[ROW][COL], int x, int y) {
     }
 }
 
-void MazeGenerator::printGrid(char grid[ROW][COL]) {
+void MazeGenerator::printGrid(vector<vector<char>> &grid) {
     for (int y = 0; y < COL; ++y) {
         for (int x = 0; x < ROW; ++x) {
             cout << grid[x][y] << ' ';
