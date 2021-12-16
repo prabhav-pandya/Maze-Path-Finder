@@ -130,6 +130,7 @@ void dfs(vector<vector<char>> board){
     Position playerPos = findPos(board, playerChar);
     Position goalPos = findPos(board, goalChar);
 
+    playerPos.lastPos= nullptr;
     playerPos.heuristicVal = 0;
 
     Position currentPos;
@@ -144,17 +145,30 @@ void dfs(vector<vector<char>> board){
 
     while(!openList.empty()){
             currentPos = openList.top();
+            if(calculateManhattan(currentPos, goalPos)==0) break;
             openList.pop();
             numIterations++;
             for(int i=0;i<4;i++){
-                Position newMove = Position{currentPos.row+adjMovesRow[i], currentPos.col+adjMovesCol[i], currentPos.heuristicVal+1, &currentPos, 0};
-                if((newMove.row<numRows && newMove.col<numCols) && (env[newMove.row][newMove.col]!=wallChar)){
-
+                Position newMove = Position{currentPos.row+adjMovesRow[i], currentPos.col+adjMovesCol[i]};
+                newMove.lastPos = new Position{currentPos.row, currentPos.col, currentPos.heuristicVal, currentPos.lastPos};
+                if((newMove.row>=0 && newMove.col>=0 && newMove.row<numRows && newMove.col<numCols) && (board[newMove.row][newMove.col]!=wallChar)){
+                    bool isInClosedList = false;
+                    for(Position pos: closedList){
+                        if(pos.row==newMove.row && pos.col==newMove.col){
+                            isInClosedList = true;
+                            break;
+                        }
+                    }
+                    if(!isInClosedList){
+                        openList.push(newMove);
+                    }
                 }
             }
+
             closedList.push_back(currentPos);
     }
-
+    if(calculateManhattan(currentPos,goalPos)==0) printSolvedEnv(currentPos, playerPos);
+    else cout<<"\nNo path exists.";
 }
 
 
@@ -395,7 +409,7 @@ int main()
     envClone = env;
 
     int choice;
-    cout<<"\nChoose:\n1. BFS\n2. A*\n3. Dijkstra\n";
+    cout<<"\nChoose:\n1. Best First Search\n2. A*\n3. Dijkstra\n4. DFS\n";
     cin>>choice;
     switch(choice){
         case 1: bfs(env);
@@ -403,6 +417,8 @@ int main()
         case 2: astar(env);
             break;
         case 3: dijkstra(env);
+            break;
+        case 4: dfs(env);
             break;
         default: cout<<"\nWrong input!";
             break;

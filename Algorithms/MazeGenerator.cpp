@@ -6,8 +6,8 @@ void MazeGenerator::getGrid(vector<vector<char>> &grid) {
     visit(grid, 0, 0);
     grid[0][0] = playerChar;
     grid[finalX][finalY] = goalChar;
-    printGrid(grid);
     addRandomPaths(grid);
+    printGrid(grid);
 }
 
 void MazeGenerator::addRandomPaths(vector<vector<char>> &grid){
