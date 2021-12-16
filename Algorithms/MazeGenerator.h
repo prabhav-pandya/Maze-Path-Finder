@@ -18,6 +18,7 @@ public:
     void visit(vector<vector<char>> &grid, int x, int y);
     static void printGrid(vector<vector<char>> &grid);
     void getGrid(vector<vector<char>> &grid);
+    void addRandomPaths(vector<vector<char>> &grid);
 };
 
 

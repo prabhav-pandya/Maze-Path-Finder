@@ -124,6 +124,38 @@ int drawEnv(vector<vector<char>> env, int row, int col) {
 }
 
 
+void dfs(vector<vector<char>> board){
+    int numRows = board.size(), numCols = board[0].size();
+
+    Position playerPos = findPos(board, playerChar);
+    Position goalPos = findPos(board, goalChar);
+
+    playerPos.heuristicVal = 0;
+
+    Position currentPos;
+
+    stack<Position> openList;
+    openList.push(playerPos);
+
+    vector<Position> closedList;
+
+    int adjMovesRow[] = {0,1,0,-1};
+    int adjMovesCol[] = {1,0,-1,0};
+
+    while(!openList.empty()){
+            currentPos = openList.top();
+            openList.pop();
+            numIterations++;
+            for(int i=0;i<4;i++){
+                Position newMove = Position{currentPos.row+adjMovesRow[i], currentPos.col+adjMovesCol[i], currentPos.heuristicVal+1, &currentPos, 0};
+                if((newMove.row<numRows && newMove.col<numCols) && (env[newMove.row][newMove.col]!=wallChar)){
+
+                }
+            }
+            closedList.push_back(currentPos);
+    }
+
+}
 
 
 void dijkstra(vector<vector<char>> board) {

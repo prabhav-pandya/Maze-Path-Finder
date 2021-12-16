@@ -32,6 +32,17 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Algorithms/AStar.cpp" />
+		<Unit filename="Algorithms/AStar.h" />
+		<Unit filename="Algorithms/BFS.cpp" />
+		<Unit filename="Algorithms/BFS.h" />
+		<Unit filename="Algorithms/Dijkstra.cpp" />
+		<Unit filename="Algorithms/Dijkstra.h" />
+		<Unit filename="Algorithms/MazeGenerator.cpp" />
+		<Unit filename="Algorithms/MazeGenerator.h" />
+		<Unit filename="Algorithms/PriorityQueue.cpp" />
+		<Unit filename="Algorithms/PriorityQueue.h" />
+		<Unit filename="Utility.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

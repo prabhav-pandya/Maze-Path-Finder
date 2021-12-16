@@ -7,6 +7,20 @@ void MazeGenerator::getGrid(vector<vector<char>> &grid) {
     grid[0][0] = playerChar;
     grid[finalX][finalY] = goalChar;
     printGrid(grid);
+    addRandomPaths(grid);
+}
+
+void MazeGenerator::addRandomPaths(vector<vector<char>> &grid){
+    for(int i=0;i<ROW;i++){
+        for(int j=0;j<COL;j++){
+            if(grid[i][j]==wallChar){
+              int randomVal = rand() & 10;
+              if(randomVal>9){
+                grid[i][j]='_';
+              }
+            }
+        }
+    }
 }
 
 void MazeGenerator::resetGrid(vector<vector<char>> &grid) {
