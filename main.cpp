@@ -1,12 +1,11 @@
 #include <bits/stdc++.h>
-#include <cstring>
 #include <cstdlib>
 #include <queue>
 #include "Utility.h"
 #include "Algorithms/MazeGenerator.h"
-#include "Algorithms/Dijkstra.h"
-#include "Algorithms/AStar.h"
-#include "Algorithms/BFS.h"
+//#include "Algorithms/Dijkstra.h"
+//#include "Algorithms/AStar.h"
+//#include "Algorithms/BFS.h"
 #include <SFML/Graphics.hpp>
 
 
@@ -49,6 +48,7 @@ Position findPos(vector<vector<char>> board, char m){
             }
         }
     }
+    return Position{0,0,0};
 }
 
 int calculateManhattan(Position m1, Position m2){
