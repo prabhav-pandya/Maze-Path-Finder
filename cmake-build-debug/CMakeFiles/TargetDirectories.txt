@@ -1,3 +1,0 @@
-/home/prabhav/Desktop/C++/Maze-Path-Finder/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/prabhav/Desktop/C++/Maze-Path-Finder/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/prabhav/Desktop/C++/Maze-Path-Finder/cmake-build-debug/CMakeFiles/Pathfinder_Algos.dir
