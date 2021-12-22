@@ -20,6 +20,7 @@
 #define wallChar 'B'
 
 
+
 using namespace std;
 
 #endif //PATHFINDER_ALGOS_UTILITY_H

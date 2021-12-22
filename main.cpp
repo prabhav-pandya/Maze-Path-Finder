@@ -3,9 +3,6 @@
 #include <queue>
 #include "Utility.h"
 #include "Algorithms/MazeGenerator.h"
-//#include "Algorithms/Dijkstra.h"
-//#include "Algorithms/AStar.h"
-//#include "Algorithms/BFS.h"
 #include <SFML/Graphics.hpp>
 
 
@@ -346,24 +343,6 @@ void astar(vector<vector<char>> board){
 }
 
 
-
-/*
- Maze Input Example
-    __________
-    __________
-    ___P__B___
-    __BBBBB___
-    ___G______
-
-    ______G_
-    _B____B_
-    _B_B__B_
-    _B____B_
-    _BBBBBB_
-    P_______
-
-*/
-
 void printEnv(){
     for(int i=0;i<env.size();i++){
         for(int j=0;j<env[i].size();j++){
@@ -372,8 +351,6 @@ void printEnv(){
         cout<<endl;
     }
 }
-
-
 
 
 int main()
