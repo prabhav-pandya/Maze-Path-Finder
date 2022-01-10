@@ -62,9 +62,8 @@ void printSolvedEnv(Position lastPos, Position startPos){
         len++;
     }
     env[startPos.row][startPos.col] = playerChar;
-
+    for(int j=0;j<env[0].size();j++){
     for(int i=0;i<env.size();i++){
-        for(int j=0;j<env[i].size();j++){
             cout<<env[i][j]<<" ";
         }
         cout<<endl;
@@ -78,9 +77,8 @@ int drawEnv(vector<vector<char>> env, int row, int col) {
    int squareSize = 30;
     sf::RenderWindow window(sf::VideoMode(col*squareSize, row*squareSize), "Pathfinder");
     vector<sf::RectangleShape> vec;
-
+    for (int j = 0; j < col; j++) {
     for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
             int x = i * squareSize;
             int y = j * squareSize;
 
